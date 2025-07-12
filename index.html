@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Swap Platform</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔄 Skill Swap Platform</h1>
+            <p style="color: rgba(255,255,255,0.8); margin-top: 10px;">Connect, Learn, and Grow Together</p>
+        </header>
+
+        <div class="nav-tabs">
+            <button class="nav-tab active" onclick="showTab('profile')">My Profile</button>
+            <button class="nav-tab" onclick="showTab('browse')">Browse Skills</button>
+            <button class="nav-tab" onclick="showTab('requests')">My Requests</button>
+            <button class="nav-tab" onclick="showTab('admin')" id="adminTab" style="display: none;">Admin Panel</button>
+        </div>
+
+        <!-- Profile Tab -->
+        <div id="profile" class="tab-content active">
+            <h2>Create/Edit Your Profile</h2>
+            <form id="profileForm">
+                <div class="two-column">
+                    <div>
+                        <div class="form-group">
+                            <label for="name">Name *</label>
+                            <input type="text" id="name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="location">Location (Optional)</label>
+                            <input type="text" id="location">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="profilePhoto">Profile Photo URL (Optional)</label>
+                            <input type="url" id="profilePhoto">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="availability">Availability</label>
+                            <select id="availability">
+                                <option value="weekends">Weekends</option>
+                                <option value="evenings">Evenings</option>
+                                <option value="weekdays">Weekdays</option>
+                                <option value="flexible">Flexible</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>
+                                <input type="checkbox" id="isPublic" checked>
+                                Make my profile public
+                            </label>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="form-group">
+                            <label for="skillsOffered">Skills I Can Offer (comma-separated)</label>
+                            <textarea id="skillsOffered" rows="4" placeholder="e.g., Photoshop, Web Design, Guitar"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="skillsWanted">Skills I Want to Learn (comma-separated)</label>
+                            <textarea id="skillsWanted" rows="4" placeholder="e.g., Python, Cooking, Photography"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn">Save Profile</button>
+            </form>
+        </div>
+
+        <!-- Browse Tab -->
+        <div id="browse" class="tab-content">
+            <h2>Browse Skills</h2>
+            
+            <div class="search-section">
+                <input type="text" id="searchSkill" class="search-input" placeholder="Search for skills (e.g., Photoshop, Excel, Guitar)...">
+            </div>
+
+            <div id="userList"></div>
+        </div>
+
+        <!-- Requests Tab -->
+        <div id="requests" class="tab-content">
+            <h2>My Swap Requests</h2>
+            
+            <div class="two-column">
+                <div>
+                    <h3>Requests I've Sent</h3>
+                    <div id="sentRequests"></div>
+                </div>
+                
+                <div>
+                    <h3>Requests I've Received</h3>
+                    <div id="receivedRequests"></div>
+                </div>
+            </div>
+
+            <div style="margin-top: 30px;">
+                <h3>Completed Swaps - Rate Your Experience</h3>
+                <div id="completedSwaps"></div>
+            </div>
+        </div>
+
+        <!-- Admin Tab -->
+        <div id="admin" class="tab-content">
+            <h2>Admin Panel</h2>
+            
+            <div class="admin-stats">
+                <div class="stat-card">
+                    <div class="stat-number" id="totalUsers">0</div>
+                    <div>Total Users</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="totalSwaps">0</div>
+                    <div>Total Swaps</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="pendingSwaps">0</div>
+                    <div>Pending Swaps</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="activeUsers">0</div>
+                    <div>Active Users</div>
+                </div>
+            </div>
+
+            <div class="admin-panel">
+                <h3 style="color: white; margin-bottom: 15px;">User Management</h3>
+                <div id="adminUserList"></div>
+            </div>
+
+            <div class="admin-panel">
+                <h3 style="color: white; margin-bottom: 15px;">Swap Management</h3>
+                <div id="adminSwapList"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
